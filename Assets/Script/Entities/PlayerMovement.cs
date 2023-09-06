@@ -10,11 +10,15 @@ public class PlayerMovement : MonoBehaviour
 
 
     // Start is called before the first frame update
-    void Start()
+    void Awake()
     {
         _controller = GetComponent<PlayerInputController>();
-        _rigidBody = GetComponent<Rigidbody2D>();
+        _rigidBody = GetComponent<Rigidbody2D>();    
+    }
 
+    private void Start()
+    {
+        _controller.OnMoveEvent += Move;
     }
 
     private void FixedUpdate()
@@ -25,7 +29,7 @@ public class PlayerMovement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        _controller.OnMoveEvent += Move;
+
     }
 
     private void Move(Vector2 direction)

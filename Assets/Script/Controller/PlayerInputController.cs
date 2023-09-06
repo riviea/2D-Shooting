@@ -30,6 +30,6 @@ public class PlayerInputController : PlayerController
 
     public void OnFire(InputValue value)
     {
-        Debug.Log("OnFire");
+        IsAttacking = value.isPressed;
     }
 }
