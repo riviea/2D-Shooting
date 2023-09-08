@@ -4,9 +4,9 @@ using UnityEngine;
 
 public class PlayerAim : MonoBehaviour
 {
-    [SerializeField] private SpriteRenderer armRenderer;
-    [SerializeField] private Transform armPivot;
-    [SerializeField] private SpriteRenderer characterRenderer;
+[SerializeField] private SpriteRenderer armRenderer;
+[SerializeField] private Transform armPivot;
+[SerializeField] private SpriteRenderer characterRenderer;
 
     private PlayerInputController _controller;
 

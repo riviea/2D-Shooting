@@ -6,7 +6,6 @@ using UnityEngine.InputSystem;
 public class PlayerInputController : PlayerController
 {
     private Camera _camera;
-    private Vector2 _position;
 
     private void Awake()
     {

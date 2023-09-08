@@ -908,7 +908,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1079665836}
   m_Layer: 0
-  m_Name: pivot
+  m_Name: BowPivot
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
