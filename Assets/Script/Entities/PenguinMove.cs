@@ -23,7 +23,7 @@ public class PenguinMove : MonoBehaviour
 
     private void FixedUpdate()
     {
-        _rigidbody.velocity = moveDir.normalized*5;
+        _rigidbody.velocity = moveDir.normalized*5f;
     }
 
     // Update is called once per frame

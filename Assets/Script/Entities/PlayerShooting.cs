@@ -6,12 +6,11 @@ using UnityEngine;
 
 public class PlayerShooting : MonoBehaviour
 {
+    private ProjectileManager _projectileManager;
     private PlayerInputController controller;
 
     [SerializeField] private Transform projectilePivot;
     private Vector2 _aimDir = Vector2.right;
-
-    [SerializeField] private GameObject projectile;
 
     private void Awake()
     {
@@ -21,8 +20,10 @@ public class PlayerShooting : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        _projectileManager = ProjectileManager.Instance;
         controller.OnAttackEvent += OnShoot;
         controller.OnLookEvent += OnAim;
+        
     }
 
     private void OnAim(Vector2 newAimDir)
@@ -30,19 +31,34 @@ public class PlayerShooting : MonoBehaviour
         _aimDir = newAimDir;
     }
 
-    private void OnShoot()
+    private void OnShoot(AttackSO attackSO)
     {
-        CreateProjectile();
+        RangedAttackData rangedAttackData = attackSO as RangedAttackData;
+        float projectilesAngleSpace = rangedAttackData.multipleProjectilesAngel;
+        int numberOfProjectilesPerShot = rangedAttackData.numberofProjectilesPerShot;
+
+        float minAngle = (numberOfProjectilesPerShot / 2f) * projectilesAngleSpace * 0.5f * rangedAttackData.multipleProjectilesAngel;
+
+        for (int i = 0; i < numberOfProjectilesPerShot; ++i)
+        {
+            float angle = minAngle + projectilesAngleSpace * i;
+            float randomSpread = UnityEngine.Random.Range(-rangedAttackData.spread, rangedAttackData.spread);
+            angle += randomSpread;
+            CreateProjectile(rangedAttackData, angle);
+        }
     }
 
-    private void CreateProjectile()
+    private void CreateProjectile(RangedAttackData rangedAttackData, float angle)
     {
-        Instantiate(projectile, projectilePivot.position, Quaternion.identity);
+        _projectileManager.ShootBullet(
+            projectilePivot.position,
+            RotateVector2(_aimDir, angle),
+            rangedAttackData);
+        //Instantiate(projectile, projectilePivot.position, Quaternion.identity);
     }
 
-    // Update is called once per frame
-    void Update()
+    private static Vector2 RotateVector2(Vector2 v, float degree)
     {
-        
+        return Quaternion.Euler(0, 0, degree) * v;
     }
 }

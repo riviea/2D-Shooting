@@ -5,6 +5,8 @@ using UnityEngine;
 public class PlayerMovement : MonoBehaviour
 {
     private PlayerInputController _controller;
+    private CharacterStatsHandler _stats;
+
     private Vector2 _movementDir = Vector2.zero;
     private Rigidbody2D _rigidBody;
 
@@ -13,6 +15,7 @@ public class PlayerMovement : MonoBehaviour
     void Awake()
     {
         _controller = GetComponent<PlayerInputController>();
+        _stats = GetComponent<CharacterStatsHandler>();
         _rigidBody = GetComponent<Rigidbody2D>();    
     }
 
@@ -39,7 +42,7 @@ public class PlayerMovement : MonoBehaviour
 
     private void ApllyMovement(Vector2 direction)
     {
-        direction = direction * 5;
+        direction = direction * _stats.CurrentStates.speed;
         _rigidBody.velocity = direction;
     }
 }
