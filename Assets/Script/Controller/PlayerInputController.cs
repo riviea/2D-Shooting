@@ -16,7 +16,6 @@ public class PlayerInputController : PlayerController
     protected override void Update()
     {
         base.Update();
-        _camera.transform.position = new Vector3(gameObject.transform.position.x, gameObject.transform.position.y, -10);
     }
 
     public void OnMove(InputValue value)

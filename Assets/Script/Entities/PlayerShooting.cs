@@ -11,6 +11,7 @@ public class PlayerShooting : MonoBehaviour
 
     [SerializeField] private Transform projectilePivot;
     private Vector2 _aimDir = Vector2.right;
+    public AudioClip shootingClip;
 
     private void Awake()
     {
@@ -37,7 +38,7 @@ public class PlayerShooting : MonoBehaviour
         float projectilesAngleSpace = rangedAttackData.multipleProjectilesAngel;
         int numberOfProjectilesPerShot = rangedAttackData.numberofProjectilesPerShot;
 
-        float minAngle = (numberOfProjectilesPerShot / 2f) * projectilesAngleSpace * 0.5f * rangedAttackData.multipleProjectilesAngel;
+        float minAngle = -(numberOfProjectilesPerShot / 2f) * projectilesAngleSpace + 0.5f * rangedAttackData.multipleProjectilesAngel;
 
         for (int i = 0; i < numberOfProjectilesPerShot; ++i)
         {
@@ -54,6 +55,9 @@ public class PlayerShooting : MonoBehaviour
             projectilePivot.position,
             RotateVector2(_aimDir, angle),
             rangedAttackData);
+
+        if (shootingClip)
+            SoundManager.PlayClip(shootingClip);
         //Instantiate(projectile, projectilePivot.position, Quaternion.identity);
     }
 

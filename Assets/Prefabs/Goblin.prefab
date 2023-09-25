@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 5597965201958823207}
   - component: {fileID: 1786904523535939397}
   - component: {fileID: 7945916649674422309}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: GoblinSprite
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -121,7 +121,9 @@ GameObject:
   - component: {fileID: 197724255473055166}
   - component: {fileID: 1117767383461835206}
   - component: {fileID: 2964653654562905749}
-  m_Layer: 0
+  - component: {fileID: 3138169154378868135}
+  - component: {fileID: 3519553175776022688}
+  m_Layer: 6
   m_Name: Goblin
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -137,7 +139,7 @@ Transform:
   m_GameObject: {fileID: 2084260348928556785}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 5.44, y: -0.25, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -173,7 +175,7 @@ BoxCollider2D:
   m_CallbackLayers:
     serializedVersion: 2
     m_Bits: 4294967295
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
@@ -248,7 +250,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   followRange: 20
   targetTag: Player
-  characterRenderer: {fileID: 0}
+  characterRenderer: {fileID: 1786904523535939397}
 --- !u!114 &1117767383461835206
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -271,5 +273,31 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 91f6379e99bc4b044a318acbb5e9c4fd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &3138169154378868135
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2084260348928556785}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ae6011ed84e6f0546b81ac1d5aaee999, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  healthChangeDelay: 0.5
+  damageClip: {fileID: 8300000, guid: 6e8772b49f34d402a90016ed445d8a2f, type: 3}
+--- !u!114 &3519553175776022688
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2084260348928556785}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 549839be20541c24b8d66a941efa0a33, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 

@@ -8,6 +8,8 @@ public class AnimationController : PlayerAnimation
     private static readonly int Attack = Animator.StringToHash("Attack");
     private static readonly int IsHit = Animator.StringToHash("IsHit");
 
+    private HealthSystem _healthSystem;
+
     protected override void Awake()
     {
         base.Awake();
@@ -18,6 +20,11 @@ public class AnimationController : PlayerAnimation
     {
         controller.OnAttackEvent += Attacking;
         controller.OnMoveEvent += Move;
+        if(_healthSystem != null)
+        {
+            _healthSystem.OnDamage += Hit;
+            _healthSystem.OnInvincibilityEnd += InvincibilityEnd;
+        }
     }
 
     private void Move(Vector2 obj)
@@ -37,6 +44,6 @@ public class AnimationController : PlayerAnimation
 
     private void InvincibilityEnd()
     {
-
+        animator.SetBool(IsHit, false);
     }
 }
